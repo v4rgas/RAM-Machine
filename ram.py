@@ -118,7 +118,7 @@ halt()
 clear(0)
 goto(7)
 """,
-        '0, 10, 6'
+        '0, 4, 6'
     )
 
     print(run_program(program))

@@ -36,7 +36,7 @@ def my_click():
     program = input_to_program(input, mem)
     output = run_program(program)
 
-    my_label.configure(text='Hello ' + 'caca')
+    my_label.configure(text='OUTPUT' + output)
 
 
 main_window = tkinter.Tk()
