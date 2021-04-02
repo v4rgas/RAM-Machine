@@ -7,6 +7,16 @@ class RAMMachine:
         self.__ram = ram
         self.pc = 0
 
+        self.valid_functions = {'dec': self.dec,
+                                'inc': self.inc,
+                                'goto': self.goto,
+                                'halt': self.halt,
+                                'clear': self.clear,
+                                'move': self.move,
+                                'copy': self.copy,
+                                'add': self.add,
+                                }
+
     def dec(self, r, *args):
         num = self.__ram[r]
 
@@ -53,15 +63,6 @@ class RAMMachine:
         self.__ram[r] = 0
         self.pc += 1
 
-    valid_functions = {'dec': dec,
-                       'inc': inc,
-                       'goto': goto,
-                       'halt': halt,
-                       'clear': clear,
-                       'move': move,
-                       'copy': copy,
-                       }
-
 
 Program = namedtuple('Program', ['code', 'memory'])
 Function = namedtuple('Function', ['name', 'arg'])
@@ -96,7 +97,7 @@ def run_program(CurrentProgram):
     RamProgram = RAMMachine(CurrentProgram.memory)
     while RamProgram.pc < len(CurrentProgram.code) and RamProgram.pc != -1:
         func, args = CurrentProgram.code[RamProgram.pc]
-        print(func, args)
+        # print(func, args)
         RamProgram.valid_functions[func](*args)
     output = RamProgram.halt()
     return output
