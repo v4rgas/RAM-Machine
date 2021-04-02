@@ -1,5 +1,8 @@
 # RAM-Machine
 Este proyecto busca simular una máquina RAM con una interfaz gráfica para mejorar la experiencia del usuario :D.
+>
+[¿Que es?](https://en.wikipedia.org/wiki/Random-access_machine)
+>
 Se pueden usar los comandos ```dec(r)```, ```inc(r)```, ```goto(r)```, ```halt()```, ```clear(r)```, ```move(r, s)```, ```copy(r, s)``` y ```add(r, s, t)```. 
 >
 Para correr la interfaz es necesario correr ```GUI.py```, dado que este corre por sí solo ```ram.py```.
