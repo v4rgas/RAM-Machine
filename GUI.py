@@ -35,7 +35,6 @@ def my_click():
     mem = memoria.get()
     program = input_to_program(input, mem)
     output = run_program(program)
-    print(output)
 
     my_label.configure(text='Hello ' + 'caca')
 
