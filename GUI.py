@@ -1,6 +1,8 @@
 import tkinter
 import tkinter.ttk as ttk
 
+from ram import run_program, input_to_program
+
 
 class TextScrollCombo(ttk.Frame):
 
@@ -30,12 +32,16 @@ class TextScrollCombo(ttk.Frame):
 
 def my_click():
     input = combo.get_input()
+    mem = memoria.get()
+    program = input_to_program(input, mem)
+    output = run_program(program)
+    print(output)
 
-    my_label = tkinter.Label(main_window, text=input)
-    my_label.pack()
+    my_label.configure(text='Hello ' + 'caca')
 
 
 main_window = tkinter.Tk()
+
 
 combo = TextScrollCombo(main_window)
 combo.pack(fill="both", expand=True)
@@ -47,7 +53,15 @@ combo.txt.config(borderwidth=3, relief="sunken")
 style = ttk.Style()
 style.theme_use('clam')
 
+memoria = tkinter.StringVar()
+nameEntered = tkinter.Entry(main_window, width=15, textvariable=memoria)
+nameEntered.pack()
+
 button = tkinter.Button(main_window, text='START', command=my_click)
 button.pack()
+
+my_label = tkinter.Label(main_window, text='Aqui estara tu output')
+my_label.pack()
+
 
 main_window.mainloop()
