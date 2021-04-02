@@ -1,7 +1,7 @@
 import tkinter
 import tkinter.ttk as ttk
 
-from ram import run_program, input_to_program
+from ram import run_program, input_to_program, get_log
 
 
 class TextScrollCombo(ttk.Frame):
@@ -39,6 +39,33 @@ def my_click():
     my_label.configure(text='OUTPUT: ' + str(output))
 
 
+# function to open a new window
+# on a button click
+def openNewWindow():
+
+    # Toplevel object which will
+    # be treated as a new window
+    newWindow = tkinter.Toplevel(main_window)
+
+    # sets the title of the
+    # Toplevel widget
+    newWindow.title("LOG")
+
+    # sets the geometry of toplevel
+    newWindow.geometry("500x500")
+
+    # A Label widget to show in toplevel
+    tkinter.Label(newWindow,
+                  text="LOG del programa").pack()
+
+    scrollBar = tkinter.Scrollbar(newWindow)
+    text = tkinter.Text(newWindow, height=10, width=50)
+    scrollBar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
+    text.pack(side=tkinter.LEFT, fill=tkinter.Y)
+    quote = get_log()
+    text.insert(tkinter.END, quote)
+
+
 main_window = tkinter.Tk()
 
 
@@ -58,6 +85,11 @@ nameEntered.pack()
 
 button = tkinter.Button(main_window, text='START', command=my_click)
 button.pack()
+
+btn = tkinter.Button(main_window,
+                     text="Click para abrir logs",
+                     command=openNewWindow)
+btn.pack(pady=10)
 
 my_label = tkinter.Label(main_window, text='Aqui estara tu output')
 my_label.pack()

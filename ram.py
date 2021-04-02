@@ -4,7 +4,7 @@ from collections import namedtuple
 class RAMMachine:
 
     def __init__(self, ram, *args):
-        self.__ram = ram
+        self._ram = ram
         self.pc = 0
 
         self.valid_functions = {'dec': self.dec,
@@ -18,7 +18,7 @@ class RAMMachine:
                                 }
 
     def dec(self, r, *args):
-        num = self.__ram[r]
+        num = self._ram[r]
 
         if num > 0:
             num -= 1
@@ -26,10 +26,10 @@ class RAMMachine:
         else:
             self.pc += 1
 
-        self.__ram[r] = num
+        self._ram[r] = num
 
     def inc(self, r, *args):
-        self.__ram[r] += 1
+        self._ram[r] += 1
         self.pc += 1
 
     def goto(self, r, *args):
@@ -37,30 +37,30 @@ class RAMMachine:
 
     def halt(self, *args):
         self.pc = -1
-        return self.__ram[0]
+        return self._ram[0]
 
     def clear(self, r, *args):
-        self.__ram[r] = 0
+        self._ram[r] = 0
         self.pc += 1
 
     def move(self, r, s, *args):
-        toS = self.__ram[r]
+        toS = self._ram[r]
 
-        self.__ram[r] = 0
-        self.__ram[s] = toS
+        self._ram[r] = 0
+        self._ram[s] = toS
 
         self.pc += 1
 
     def copy(self, r, s, *args):
-        toS = self.__ram[r]
-        self.__ram[s] = toS
+        toS = self._ram[r]
+        self._ram[s] = toS
 
         self.pc += 1
 
     def add(self, r, s, t, *args):
-        self.__ram[s] += self.__ram[r]
-        self.__ram[t] += self.__ram[r]
-        self.__ram[r] = 0
+        self._ram[s] += self._ram[r]
+        self._ram[t] += self._ram[r]
+        self._ram[r] = 0
         self.pc += 1
 
 
@@ -93,14 +93,30 @@ def input_to_program(to_code, mem):
 
 
 def run_program(CurrentProgram):
-
+    log = []
     RamProgram = RAMMachine(CurrentProgram.memory)
     while RamProgram.pc < len(CurrentProgram.code) and RamProgram.pc != -1:
         func, args = CurrentProgram.code[RamProgram.pc]
         # print(func, args)
+        previous_ram = RamProgram._ram
         RamProgram.valid_functions[func](*args)
+        current_ram = RamProgram._ram
+
+        log.append(f'{func.upper()}{args}\n{previous_ram} -> {current_ram}\n')
     output = RamProgram.halt()
+    write_log(log)
     return output
+
+
+def write_log(log):
+    with open('logs.txt', 'w') as f:
+        for entry in log:
+            print(entry, file=f)
+
+
+def get_log():
+    with open('logs.txt') as f:
+        return f.read()
 
 
 if __name__ == '__main__':
