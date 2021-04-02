@@ -9,3 +9,5 @@ Para correr la interfaz es necesario correr ```GUI.py```, dado que este corre po
 ![alt text](https://github.com/v4rgas/RAM-Machine/blob/main/example/example1.png?raw=true)
 >
 No nos hacemos responsables por posibles errores :confused:
+
+**Ahora tenemos versiones ejecutables para Windows y Linux**
