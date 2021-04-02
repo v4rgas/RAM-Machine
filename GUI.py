@@ -23,6 +23,17 @@ class TextScrollCombo(ttk.Frame):
         scrollb.grid(row=0, column=1, sticky='nsew')
         self.txt['yscrollcommand'] = scrollb.set
 
+    def get_input(self):
+        input = self.txt.get('1.0', 'end')
+        return input
+
+
+def my_click():
+    input = combo.get_input()
+
+    my_label = tkinter.Label(main_window, text=input)
+    my_label.pack()
+
 
 main_window = tkinter.Tk()
 
@@ -35,5 +46,8 @@ combo.txt.config(borderwidth=3, relief="sunken")
 
 style = ttk.Style()
 style.theme_use('clam')
+
+button = tkinter.Button(main_window, text='START', command=my_click)
+button.pack()
 
 main_window.mainloop()
