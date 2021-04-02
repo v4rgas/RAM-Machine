@@ -1,5 +1,6 @@
 import tkinter
 import tkinter.ttk as ttk
+from datetime import datetime
 
 from ram import run_program, input_to_program, get_log
 
@@ -66,6 +67,14 @@ def openNewWindow():
     text.insert(tkinter.END, quote)
 
 
+def save_code():
+    input = combo.get_input()
+    now = str(datetime.now())
+
+    with open(now, 'w') as f:
+        f.write(input)
+
+
 main_window = tkinter.Tk()
 
 
@@ -90,6 +99,10 @@ btn = tkinter.Button(main_window,
                      text="Click para abrir logs",
                      command=openNewWindow)
 btn.pack(pady=10)
+
+save_button = tkinter.Button(main_window, text='SAVE', command=save_code)
+save_button.pack()
+
 
 my_label = tkinter.Label(main_window, text='Aqui estara tu output')
 my_label.pack()
