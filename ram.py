@@ -98,7 +98,7 @@ def run_program(CurrentProgram):
     while RamProgram.pc < len(CurrentProgram.code) and RamProgram.pc != -1:
         func, args = CurrentProgram.code[RamProgram.pc]
         # print(func, args)
-        previous_ram = RamProgram._ram
+        previous_ram = RamProgram._ram.copy()
         RamProgram.valid_functions[func](*args)
         current_ram = RamProgram._ram
 
