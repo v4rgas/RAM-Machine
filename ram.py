@@ -95,15 +95,21 @@ def input_to_program(to_code, mem):
 def run_program(CurrentProgram):
     log = []
     RamProgram = RAMMachine(CurrentProgram.memory)
+    n = 0
     while RamProgram.pc < len(CurrentProgram.code) and RamProgram.pc != -1:
+        n += 1
         func, args = CurrentProgram.code[RamProgram.pc]
         # print(func, args)
         previous_ram = RamProgram._ram.copy()
         RamProgram.valid_functions[func](*args)
         current_ram = RamProgram._ram
 
+        if n == 100_000:
+            RamProgram.pc = -1
+
         log.append(f'{func.upper()}{args}\n{previous_ram} -> {current_ram}\n')
     output = RamProgram.halt()
+    log.insert(0, f'CANTIDAD DE PASOS: {n}\n')
     write_log(log)
     return output
 
