@@ -1,9 +1,0 @@
-dec(2)
-goto(6)
-goto(3)
-dec(1)
-goto(8)
-goto(0)
-copy(1, 0)
-halt()
-

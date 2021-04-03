@@ -71,7 +71,7 @@ def save_code():
     input = combo.get_input()
     now = str(datetime.now())
 
-    with open(now, 'w') as f:
+    with open(f'{now}.txt', 'w') as f:
         f.write(input)
 
 
