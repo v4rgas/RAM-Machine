@@ -1,4 +1,4 @@
-import tkinter
+import tkinter, os
 import tkinter.ttk as ttk
 from datetime import datetime
 
@@ -69,9 +69,10 @@ def openNewWindow():
 
 def save_code():
     input = combo.get_input()
-    now = str(datetime.now())
+    now = (str(datetime.now())[0 : len(str(datetime.now())) - 7]).replace(':', '_')
 
-    with open(f'{now}.txt', 'w') as f:
+    path = os.path.join(f'{now}.txt')
+    with open(path, 'w') as f:
         f.write(input)
 
 
