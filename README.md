@@ -27,7 +27,7 @@ No nos hacemos responsables por posibles errores :confused:
 
     * COPY(r, s): Copia el valor del registro r al registro s
 
-    * ADD(r, s, t): Suma t al registro s y t  
+    * ADD(r, s, t): Suma r al registro s y t  
 >
 * Consideraciones:
     * PC corresponde a la linea de codigo que el programa esta ejecutando, y este comienza en la primera linea (PC = 0)
