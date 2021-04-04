@@ -111,7 +111,7 @@ btn = tkinter.Button(main_window,
 btn.grid(padx=0, pady=5, row=2, column=3)
 
 
-my_label = tkinter.Label(main_window, text='Aqui estara tu output')
+my_label = tkinter.Label(main_window, text='Aqui estará tu output')
 my_label.grid(padx=10, pady=10, row=3, column=1, columnspan=3)
 
 main_window.title('RAM')
