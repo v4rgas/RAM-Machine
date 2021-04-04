@@ -1,4 +1,5 @@
-import tkinter, os
+import tkinter
+import os
 import tkinter.ttk as ttk
 from datetime import datetime
 
@@ -69,7 +70,8 @@ def openNewWindow():
 
 def save_code():
     input = combo.get_input()
-    now = (str(datetime.now())[0 : len(str(datetime.now())) - 7]).replace(':', '_')
+    now = (str(datetime.now())[
+           0: len(str(datetime.now())) - 7]).replace(':', '_')
 
     path = os.path.join(f'{now}.txt')
     with open(path, 'w') as f:
@@ -80,7 +82,8 @@ main_window = tkinter.Tk()
 
 
 combo = TextScrollCombo(main_window)
-combo.pack(fill="both", expand=True)
+# combo.pack(fill="both", expand=True)
+combo.grid(padx=0, row=0, column=1, columnspan=3)
 combo.config(width=600, height=600)
 
 combo.txt.config(font=("consolas", 12), undo=True, wrap='word')
@@ -90,23 +93,26 @@ style = ttk.Style()
 style.theme_use('clam')
 
 memoria = tkinter.StringVar()
-nameEntered = tkinter.Entry(main_window, width=15, textvariable=memoria)
-nameEntered.pack()
+nameEntered = tkinter.Entry(main_window, textvariable=memoria, width=50)
+nameEntered.grid(padx=0, pady=5, row=1, column=1, columnspan=5)
 
-button = tkinter.Button(main_window, text='START', command=my_click)
-button.pack()
+button = tkinter.Button(main_window, text='START',
+                        command=my_click, width=10)
+button.grid(padx=0, pady=5, row=2, column=1)
+
+save_button = tkinter.Button(
+    main_window, text='SAVE', command=save_code, width=10)
+save_button.grid(padx=0, pady=5, row=2, column=2)
 
 btn = tkinter.Button(main_window,
-                     text="Click para abrir logs",
-                     command=openNewWindow)
-btn.pack(pady=10)
-
-save_button = tkinter.Button(main_window, text='SAVE', command=save_code)
-save_button.pack()
+                     text="LOGS",
+                     command=openNewWindow,
+                     width=10)
+btn.grid(padx=0, pady=5, row=2, column=3)
 
 
 my_label = tkinter.Label(main_window, text='Aqui estara tu output')
-my_label.pack()
+my_label.grid(padx=10, pady=10, row=3, column=1, columnspan=3)
 
 
 main_window.mainloop()
