@@ -1,4 +1,5 @@
 from collections import namedtuple
+import tkinter
 
 
 class RAMMachine:
@@ -96,7 +97,7 @@ Function = namedtuple('Function', ['name', 'arg'])
 
 
 def input_to_program(to_code, mem):
-
+    to_code = to_code.lower()
     to_code = to_code.split('\n')
     to_code = [line for line in to_code if line != '']
     code = []
