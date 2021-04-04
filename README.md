@@ -1,5 +1,8 @@
 # RAM-Machine
 Este proyecto busca simular una máquina RAM con una interfaz gráfica para mejorar la experiencia del usuario :D.
+
+## [CLICK AQUI PARA ACCEDER A LA ULTIMA VERSION](https://github.com/v4rgas/RAM-Machine/releases)
+
 >
 [¿Que es?](https://en.wikipedia.org/wiki/Random-access_machine)
 >
