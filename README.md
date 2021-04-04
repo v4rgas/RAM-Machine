@@ -18,7 +18,7 @@ No nos hacemos responsables por posibles errores :confused:
 
 * Funciones:
 
-    * DEC(r): si r>0, entonces r-=1 y PC+=2; SINO pc += 1
+    * DEC(r): si r>0, entonces r-=1 y PC+=2; SINO PC += 1
     * INC(r): Aumento en 1 el registro r
     * GOTO(R): PC = r
     * HALT(): Dentiene programa, output en el registro 0
