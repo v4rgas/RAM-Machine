@@ -17,7 +17,21 @@ class RAMMachine:
                                 'add': self.add,
                                 }
 
+    def _fill(self, r):
+
+        lenght = len(self._ram)
+        max_index = lenght - 1
+
+        if r > max_index:
+            to_add = r+1 - lenght
+
+            for _ in range(to_add):
+                self._ram.append(0)
+
     def dec(self, r, *args):
+
+        self._fill(r)
+
         num = self._ram[r]
 
         if num > 0:
@@ -29,6 +43,7 @@ class RAMMachine:
         self._ram[r] = num
 
     def inc(self, r, *args):
+        self._fill(r)
         self._ram[r] += 1
         self.pc += 1
 
@@ -40,10 +55,14 @@ class RAMMachine:
         return self._ram[0]
 
     def clear(self, r, *args):
+        self._fill(r)
         self._ram[r] = 0
         self.pc += 1
 
     def move(self, r, s, *args):
+        self._fill(r)
+        self._fill(s)
+
         toS = self._ram[r]
 
         self._ram[r] = 0
@@ -52,12 +71,20 @@ class RAMMachine:
         self.pc += 1
 
     def copy(self, r, s, *args):
+        self._fill(r)
+        self._fill(s)
+
         toS = self._ram[r]
         self._ram[s] = toS
 
         self.pc += 1
 
     def add(self, r, s, t, *args):
+
+        self._fill(r)
+        self._fill(s)
+        self._fill(t)
+
         self._ram[s] += self._ram[r]
         self._ram[t] += self._ram[r]
         self._ram[r] = 0
