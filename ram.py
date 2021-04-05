@@ -132,7 +132,7 @@ def run_program(CurrentProgram):
         RamProgram.valid_functions[func](*args)
         current_ram = RamProgram._ram
 
-        if n == 100_000:
+        if n == 1_000_000:
             RamProgram.pc = -1
 
         log.append(f'{func.upper()}{args}\n{previous_ram} -> {current_ram}\n')
