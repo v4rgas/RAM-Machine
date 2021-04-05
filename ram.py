@@ -134,6 +134,7 @@ def run_program(CurrentProgram):
 
         if n == 1_000_000:
             RamProgram.pc = -1
+            log.insert(0, f'CANTIDAD DE PASOS MAXIMA EXCEDIDA\n')
 
         log.append(f'{func.upper()}{args}\n{previous_ram} -> {current_ram}\n')
     output = RamProgram.halt()
