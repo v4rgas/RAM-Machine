@@ -1,5 +1,8 @@
 # RAM-Machine
 Este proyecto busca simular una máquina RAM con una interfaz gráfica para mejorar la experiencia del usuario :D.
+
+## [CLICK AQUI PARA ACCEDER A LA ULTIMA VERSION](https://github.com/v4rgas/RAM-Machine/releases)
+
 >
 [¿Que es?](https://en.wikipedia.org/wiki/Random-access_machine)
 >
@@ -20,7 +23,7 @@ No nos hacemos responsables por posibles errores :confused:
 
     * DEC(r): si r>0, entonces r-=1 y PC+=2; SINO PC += 1
     * INC(r): Aumento en 1 el registro r
-    * GOTO(R): PC = r
+    * GOTO(r): PC = r
     * HALT(): Dentiene programa, output en el registro 0
     * CLEAR(r): Hace que el registro r se quede en 0, * luego sigue con la siguiente instruccion
     * MOVE(r, s): Mueve el valor del registro r al registro s, deja el registro r igual a 0
